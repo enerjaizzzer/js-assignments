@@ -30,7 +30,10 @@
  *
  */
 function getFizzBuzz(num) {
-    throw new Error('Not implemented');
+    if (num % 3 === 0 && num % 5 === 0) { return 'FizzBuzz' }
+    else if (num % 3 === 0) { return 'Fizz' }
+    else if (num % 5 === 0) { return 'Buzz' }
+    else return num;
 }
 
 
@@ -46,7 +49,7 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-    throw new Error('Not implemented');
+    return n ? n * getFactorial(n - 1) : 1;
 }
 
 
@@ -63,7 +66,8 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-    throw new Error('Not implemented');
+    if (n2 === n1) return n1;
+    return n1 + getSumBetweenNumbers(n1 + 1, n2);
 }
 
 
@@ -81,8 +85,11 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(a,b,c) {
-    throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+    if (a < b + c && b < a + c && c < a + b) {
+        return true;
+    }
+    return false;
 }
 
 
@@ -167,6 +174,16 @@ function isInsideCircle(circle, point) {
  */
 function findFirstSingleChar(str) {
     throw new Error('Not implemented');
+    // var count = 0;
+    // for (let i = 0; i < str.length; i++) {
+    //     var pos = str.indexOf(str[i]);
+
+    //     if (pos !== -1) {
+    //         count++;
+    //     }
+    //     if (count = 1){return str[i]}
+    //     if (count = 0){return null}
+    // }
 }
 
 
@@ -443,15 +460,15 @@ module.exports = {
     doRectanglesOverlap: doRectanglesOverlap,
     isInsideCircle: isInsideCircle,
     findFirstSingleChar: findFirstSingleChar,
-    getIntervalString : getIntervalString,
+    getIntervalString: getIntervalString,
     reverseString: reverseString,
     reverseInteger: reverseInteger,
     isCreditCardNumber: isCreditCardNumber,
     getDigitalRoot: getDigitalRoot,
     isBracketsBalanced: isBracketsBalanced,
-    timespanToHumanString : timespanToHumanString,
+    timespanToHumanString: timespanToHumanString,
     toNaryString: toNaryString,
     getCommonDirectoryPath: getCommonDirectoryPath,
     getMatrixProduct: getMatrixProduct,
-    evaluateTicTacToePosition : evaluateTicTacToePosition
+    evaluateTicTacToePosition: evaluateTicTacToePosition
 };
