@@ -64,6 +64,29 @@ function parseBankAccount(bankAccount) {
  */
 function* wrapText(text, columns) {
     throw new Error('Not implemented');
+    // let arr = text.split(' ');
+    // let letters = 0;
+    // let newText = '';
+    // let newArr = [];
+    // let result = [];
+    // for (let i = 0; i < arr.length; i++){
+    //     if (letters + arr[i].length < columns){
+    //         newArr.push(arr[i]);
+    //         letters += arr[i].length + 1;
+    //     }else if(letters + arr[i].length > columns){
+    //         newText = newArr.join(' ');
+    //         result.push(newText);
+    //         newArr = [];
+    //         letters = 0;
+    //         i--;
+    //     }
+    //     if(i == arr.length - 1){
+    //         newText = newArr.join(' ')
+    //         result.push(newText);
+    //     }
+    // }
+    // console.log(result);
+    // return result;
 }
 
 

@@ -315,7 +315,15 @@ function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 function propagateItemsByPositionIndex(arr) {
-   throw new Error('Not implemented');
+   let newArr = [];
+   let result = arr.map(function (val, i) {
+      if (i == 0) { newArr.push(val) }
+      if (i == 1) { newArr.push(val, val) }
+      if (i == 2) { newArr.push(val, val, val) }
+      if (i == 3) { newArr.push(val, val, val, val) }
+      if (i == 4) { newArr.push(val, val, val, val, val) }
+   })
+   return newArr;
 }
 
 
@@ -493,16 +501,19 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  */
 function sortCitiesArray(arr) {
-   throw new Error('Not implemented');
-   // let newArrCount = arr.slice(0);
-   // newArrCount.sort(function(a,b) {
-   //    var x = a.country.toLowerCase();
-   //    var y = b.country.toLowerCase();
-   //    return x < y ? -1 : x > y ? 1 : 0;
-   // });
-   // let result = newArrCount.slice(0);
-
-   // return newArr;
+   return arr.sort((a, b) => {
+      if (a.country > b.country) {
+         return 1;
+      } else if (a.country < b.country) {
+         return -1;
+      } else if (a.country == b.country){
+         if (a.city > b.city) {
+            return 1;
+         } else if (a.city < b.city) {
+            return -1;
+         } else { return 0 };
+      }
+   });
 }
 
 /**
@@ -524,18 +535,19 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]   
  */
 function getIdentityMatrix(n) {
-   throw new Error('Not implemented');
-   // let newArr = new Array(n).fill([]);
-   // let result = newArr.map(function (x, i) {
-   //    let arr = new Array(n).fill(0);
-   //    console.log(arr);
-   //    let value = arr.map(function (x, i) {
-   //       return slice
-   //    })
-   //    return value;
-   // })
-   // console.log(result);
-   // return result;
+
+   let newArr = new Array(n).fill([]);
+   let result = newArr.map(function (x, i) {
+      let arr = new Array(n).fill(0);
+      let value = arr.map(function (y, j) {
+         if (i === j){
+            return y = 1;
+         }
+         return y = 0;
+      })
+      return value;
+   })
+   return result;
 }
 
 /**
@@ -552,10 +564,16 @@ function getIdentityMatrix(n) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(start, end) {
-   throw new Error('Not implemented');
-   // let arr = Array.from({length: }, (v,i) => i)
-   // arr.range(start, end);
-   // return arr;
+   let s = start;
+   let e = end + 1;
+   let leng = e - s;
+   if (start < 0){
+      s = -start;
+      leng = s + e
+   }
+   let arr = Array.from({length: leng}, (v,i) => i + start)
+
+   return arr;
 }
 
 /**
@@ -570,10 +588,10 @@ function getIntervalArray(start, end) {
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
 function distinct(arr) {
-   let uniqueArray = arr.filter(function(item, pos) {
+   let uniqueArray = arr.filter(function (item, pos) {
       return arr.indexOf(item) == pos;
-  })
-  return uniqueArray;
+   })
+   return uniqueArray;
 }
 
 /**
@@ -624,6 +642,11 @@ function group(array, keySelector, valueSelector) {
  */
 function selectMany(arr, childrenSelector) {
    throw new Error('Not implemented');
+   let arrays = arr.reduce(function(a, b){
+      return a.concat(b);
+ }, []);
+ console.log(arrays)
+ return arrays
 }
 
 

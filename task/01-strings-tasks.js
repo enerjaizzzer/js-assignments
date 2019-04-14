@@ -235,7 +235,29 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-    throw new Error('Not implemented');
+    let upperCase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+    let lowerCase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    let newStr = [];
+    for (let i = 0; i < str.length; i++){
+        if (str[i] == ' ' || str[i] == '?' || str[i] == '!'){newStr.push(str[i]);}
+        else if (str[i].toUpperCase() == str[i]){
+            let x = upperCase.indexOf(str[i]);
+            let y = x + 13;
+            if (y >= 26){
+                y -= 26;
+            }
+            newStr.push(upperCase[y]);
+        }
+        else if (str[i].toLowerCase() == str[i]){
+            let x = lowerCase.indexOf(str[i]);
+            let y = x + 13;
+            if (y >= 26){
+                y -= 26;
+            }
+            newStr.push(lowerCase[y]);
+        }
+    }
+    return newStr.join('');
 }
 
 /**
@@ -252,7 +274,9 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    throw new Error('Not implemented');
+    if(!value){return false;}
+    if(typeof(value) === 'object' && Object.keys(value).length == 0){return false;}
+    return true;
 }
 
 
@@ -281,7 +305,11 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    throw new Error('Not implemented');
+    let kards = ['A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
+                 'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
+                 'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
+                 'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠']
+    return kards.indexOf(value);
 }
 
 

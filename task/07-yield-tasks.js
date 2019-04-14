@@ -34,6 +34,19 @@
  */
 function* get99BottlesOfBeer() {
     throw new Error('Not implemented');
+    // let arr = [];
+    // for(let i = 99; i > 0; i--){
+    //     arr.push(i + ' bottles of beer on the wall, ' + i + ' bottles of beer.');
+    //     if (i === 1){
+    //         arr.push('Take one down and pass it around, no more bottles of beer on the wall.');
+    //     } else {
+    //         arr.push('Take one down and pass it around, ' + i + ' bottles of beer on the wall.')
+    //     }
+    // }
+
+    // arr.push('No more bottles of beer on the wall, no more bottles of beer.')
+    // arr.push('Go to the store and buy some more, 99 bottles of beer on the wall.')
+    // return arr;
 }
 
 
@@ -47,18 +60,19 @@ function* get99BottlesOfBeer() {
  *
  */
 function* getFibonacciSequence() {
-    let result = [0, 1, 1]
-    var a = 1,
-        b = 1,
-        c;
-    for (; c < 39088169;) {
-        c = a + b;
-        console.log(c)
-        result.push(c);
-        a = b;
-        b = c;
-    }
-    return result;
+    throw new Error('Not implemented');
+    // let result = [0, 1, 1]
+    // var a = 1,
+    //     b = 1,
+    //     c;
+    // for (; c < 39088169;) {
+    //     c = a + b;
+    //     console.log(c)
+    //     result.push(c);
+    //     a = b;
+    //     b = c;
+    // }
+    // return result;
 }
 
 
