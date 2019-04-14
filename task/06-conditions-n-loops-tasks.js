@@ -173,17 +173,11 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-    throw new Error('Not implemented');
-    // var count = 0;
-    // for (let i = 0; i < str.length; i++) {
-    //     var pos = str.indexOf(str[i]);
-
-    //     if (pos !== -1) {
-    //         count++;
-    //     }
-    //     if (count = 1){return str[i]}
-    //     if (count = 0){return null}
-    // }
+    for (let i = 0; i < str.length; i++) {
+        if (str.indexOf(str[i]) === i && 
+            str.lastIndexOf(str[i]) === i)
+            return str[i];
+    }
 }
 
 
@@ -226,7 +220,10 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-    throw new Error('Not implemented');
+    let arr = str.split('');
+    let rev = arr.reverse();
+    let result = rev.join('');
+    return result;
 }
 
 
@@ -243,7 +240,12 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-    throw new Error('Not implemented');
+    let str = String(num);
+    let arr = str.split('');
+    let rev = arr.reverse();
+    let newStr = rev.join('');
+    let newNum = Number(newStr);
+    return newNum;
 }
 
 
@@ -287,7 +289,19 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-    throw new Error('Not implemented');
+    let str = String(num);
+    let arr = str.split('');
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++){
+        sum += +arr[i];
+    }
+    let newStr = String(sum);
+    let newArr = newStr.split('');
+    let result = 0;
+    for (let i = 0; i < newArr.length; i++){
+        result += +newArr[i];
+    }
+    return result;
 }
 
 
@@ -313,7 +327,16 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true 
  */
 function isBracketsBalanced(str) {
-    throw new Error('Not implemented');
+    let stack = [];
+    let open  = ['[', '(', '{', '<'];
+    let close = [']', ')', '}', '>'];
+    for (let i = 0; i < str.length; i++) {
+        if (open.indexOf(str[i]) >= 0)
+            stack.push(open.indexOf(str[i]));
+        else if (close[stack.pop()] != str[i])
+            return false;
+    }
+    return stack.length == 0;
 }
 
 
@@ -349,7 +372,32 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-    throw new Error('Not implemented');
+    let range = endDate.getTime() - startDate.getTime();
+    let s = 1000;
+    let m = 60000;
+    let h = 3600000;
+    let d = 86400000;
+    if (range <= 45 * s)
+        return 'a few seconds ago';
+    if (range <= 90 * s)
+        return 'a minute ago';
+    if (range <= 45 * m)
+        return `${Math.round((range - 1) / m)} minutes ago`;
+    if (range <= 90 * m)
+        return 'an hour ago';
+    if (range <= 22 * h)
+        return `${Math.round((range - 1) / h)} hours ago`;
+    if (range <= 36 * h)
+        return 'a day ago';
+    if (range <= 25 * d)
+        return `${Math.round((range - 1) / d)} days ago`;
+    if (range <= 45 * d)
+        return 'a month ago';
+    if (range <= 345 * d)
+        return `${Math.round(range / 30 / d)} months ago`;
+    if (range <= 545 * d)
+        return 'a year ago';
+    return `${Math.round(range / 365 / d)} years ago`;
 }
 
 
@@ -373,7 +421,9 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-    throw new Error('Not implemented');
+    let newNum = num.toString(n)
+    let result = String(newNum);
+    return result
 }
 
 
@@ -391,6 +441,12 @@ function toNaryString(num, n) {
  */
 function getCommonDirectoryPath(pathes) {
     throw new Error('Not implemented');
+    // let arr1 = [].push(pathes[0])
+    // let arr2 = [].push(pathes[1])
+    // console.log(arr1, arr2)
+    // let val2 = pathes[1]
+    // let arr2
+    // var diff = function(arr, arr2) {
 }
 
 
@@ -413,7 +469,16 @@ function getCommonDirectoryPath(pathes) {
  *
  */
 function getMatrixProduct(m1, m2) {
-    throw new Error('Not implemented');
+    let result = [];
+    for (let i = 0; i < m1.length; i++) {
+        result[i] = [];
+        for (let j = 0; j < m2[i].length; j++) {
+            result[i][j] = 0;
+            for (let k = 0; k < m1[i].length; k++)
+                result[i][j] += m1[i][k] * m2[k][j];
+        }
+    }
+    return result;
 }
 
 

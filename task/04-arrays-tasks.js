@@ -625,7 +625,15 @@ function distinct(arr) {
  *   }
  */
 function group(array, keySelector, valueSelector) {
-   throw new Error('Not implemented');
+   let result = array.reduce(function (old, now) {
+      let key = keySelector(now);
+      let val = valueSelector(now);
+      let arr = old.get(key) || [];
+      arr.push(val);
+      old.set(key, arr);
+      return old;
+  }, new Map);
+  return result;
 }
 
 
@@ -641,12 +649,10 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-   throw new Error('Not implemented');
-   let arrays = arr.reduce(function(a, b){
-      return a.concat(b);
- }, []);
- console.log(arrays)
- return arrays
+   let result = arr.reduce(function(old, now) {
+      return old.concat(childrenSelector(now))
+   }, []);
+   return result;
 }
 
 

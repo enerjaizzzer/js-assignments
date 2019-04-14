@@ -60,11 +60,9 @@ function getJSON(obj) {
  */
 function fromJSON(proto, json) {
     throw new Error('Not implemented');
-    // Object.setPrototypeOf(json, proto);
-    // let result = JSON.parse(json, function(key, value){
-    //     if (key == proto) return value
-    // }) 
-    // return result;
+    // let obj = JSON.parse(json);
+    // obj.__proto__ = proto;
+    // return obj;  
 }
 
 

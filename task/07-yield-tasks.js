@@ -60,7 +60,14 @@ function* get99BottlesOfBeer() {
  *
  */
 function* getFibonacciSequence() {
-    throw new Error('Not implemented');
+    let n1 = 0,
+        n2 = 1;
+    for (;true;) {
+        let num = n1;
+        n1 = n2;
+        n2 = n1 + num;
+        yield num;
+    }
     // let result = [0, 1, 1]
     // var a = 1,
     //     b = 1,
